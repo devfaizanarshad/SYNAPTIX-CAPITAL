@@ -14,6 +14,7 @@ import { TechnologySection, type TechnologyItem } from "./components/TechnologyS
 import { FoundersSection, type FounderPrinciple } from "./components/FoundersSection";
 import { HeroAtmosphere } from "./components/HeroAtmosphere";
 import { SiteMotion } from "./components/SiteMotion";
+import { RetirementExitSection } from "./components/RetirementExitSection";
 
 type ImageCard = {
   eyebrow: string;
@@ -343,6 +344,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <RetirementExitSection />
 
         <PositioningSection />
 

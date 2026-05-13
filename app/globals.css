@@ -4636,3 +4636,339 @@ h3 {
     min-height: 320px;
   }
 }
+
+/* Retirement Exit Section - Premium Redesign */
+.re-grand-section {
+  position: relative;
+  padding: 140px 0;
+  background: #03080c;
+  color: #fff;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(215, 175, 115, 0.15);
+}
+
+.re-bg-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(215, 175, 115, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.4;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.re-bg-glow {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 800px; height: 800px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(184, 136, 76, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.re-grand-container {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 40px), 1180px);
+  margin: 0 auto;
+}
+
+.fade-up-elem {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+.re-grand-section.is-visible .fade-up-elem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.re-eyebrow-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.re-badge-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(215, 175, 115, 0.3);
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(184, 136, 76, 0.1);
+}
+
+.re-badge-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(215, 175, 115, 0.2), transparent);
+  animation: shine-slow 3s infinite linear;
+}
+
+.re-badge-spinner {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #d7af73;
+  box-shadow: 0 0 10px #d7af73, 0 0 20px #d7af73;
+  animation: pulse-dot 2s infinite;
+}
+
+.re-badge-premium span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #d7af73;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shine-slow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+.re-main-title-wrap {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.re-main-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.05;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.re-text-gradient {
+  background: linear-gradient(to right, #ffffff, #d7af73, #a27236);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.re-main-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.re-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.re-glass-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 50px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.re-glass-panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 175, 115, 0.5), transparent);
+}
+
+.re-glass-content h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.re-glass-content p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.re-btn-shimmer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background: rgba(184, 136, 76, 0.15);
+  border: 1px solid rgba(215, 175, 115, 0.5);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.re-btn-shimmer:hover {
+  background: rgba(184, 136, 76, 0.3);
+  box-shadow: 0 0 30px rgba(184, 136, 76, 0.3);
+  transform: translateY(-2px);
+}
+
+.re-btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+.re-btn-shimmer-effect {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine-btn 3s infinite;
+  z-index: 1;
+}
+
+@keyframes shine-btn {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.re-glass-features {
+  display: flex;
+  gap: 24px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.re-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.re-feat-icon {
+  width: 24px; height: 24px;
+  background: rgba(215, 175, 115, 0.2);
+  color: #d7af73;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  border: 1px solid rgba(215, 175, 115, 0.4);
+}
+
+.re-feature span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.re-cards-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.re-premium-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.re-premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.re-premium-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.re-premium-border-glow {
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  padding: 1px;
+}
+
+.re-premium-inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.re-card-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  color: rgba(215, 175, 115, 0.3);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.re-premium-card h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  color: #d7af73;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.re-premium-card p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .re-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .re-glass-panel {
+    padding: 30px;
+  }
+  .re-glass-features {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
