@@ -2100,6 +2100,98 @@ h3 {
   width: 100%;
 }
 
+.office-location {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(82px, 9vw, 126px) 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 82% 18%, rgba(216, 174, 115, 0.13), transparent 28%),
+    linear-gradient(180deg, #041018 0%, #07131b 100%);
+  background-size: 92px 92px, 92px 92px, auto, auto;
+}
+
+.office-location-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.74fr);
+  gap: clamp(38px, 6vw, 90px);
+  align-items: center;
+}
+
+.office-location-copy {
+  max-width: 650px;
+}
+
+.office-location-copy h2 {
+  max-width: 620px;
+}
+
+.office-location-copy address {
+  margin: 0 0 24px;
+  padding-left: 24px;
+  color: #fff;
+  border-left: 1px solid rgba(216, 174, 115, 0.46);
+  font-style: normal;
+  font-size: clamp(1.16rem, 1.45vw, 1.38rem);
+  font-weight: 600;
+  line-height: 1.62;
+}
+
+.office-location-copy p:not(.section-kicker) {
+  max-width: 590px;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.72;
+}
+
+.office-location-button {
+  color: #06131a;
+}
+
+.office-location-media {
+  position: relative;
+  min-height: clamp(420px, 48vw, 620px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(216, 174, 115, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+}
+
+.office-location-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 16, 24, 0.08) 0%, rgba(4, 16, 24, 0.64) 100%),
+    linear-gradient(90deg, rgba(4, 16, 24, 0.34), transparent 58%);
+  pointer-events: none;
+}
+
+.office-location-media img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.82) contrast(1.08) brightness(0.86);
+  transform: scale(1.02);
+}
+
+.office-location-media figcaption {
+  position: absolute;
+  z-index: 1;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  margin: 0;
+  max-width: 360px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
 .site-footer {
   position: relative;
   overflow: hidden;
@@ -3731,6 +3823,7 @@ h3 {
   .cta-grid,
   .contact-hero-grid,
   .contact-brief-grid,
+  .office-location-grid,
   .vision-grid,
   .transition-grid,
   .vision-editorial-grid,
@@ -3760,6 +3853,10 @@ h3 {
 
   .contact-form {
     max-width: 680px;
+  }
+
+  .office-location-media {
+    min-height: 460px;
   }
 }
 
@@ -4307,6 +4404,19 @@ h3 {
   .contact-brief-card,
   .contact-form {
     padding: 22px 20px;
+  }
+
+  .office-location {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .office-location-copy address {
+    padding-left: 18px;
+  }
+
+  .office-location-media {
+    min-height: 360px;
   }
 
   .form-grid {

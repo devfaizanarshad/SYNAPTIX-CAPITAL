@@ -12,6 +12,11 @@ const contactDetails = [
     href: "mailto:info@synaptixcapital.com"
   },
   {
+    label: "Office",
+    value: "Level 30, The Leadenhall Building, 122 Leadenhall Street, London",
+    href: "https://www.google.com/maps/search/?api=1&query=Level%2030%2C%20The%20Leadenhall%20Building%2C%20122%20Leadenhall%20Street%2C%20London"
+  },
+  {
     label: "Focus",
     value: "AI, robotics, deep tech, and science-led innovation",
     href: "#contact-brief"
@@ -190,6 +195,45 @@ export function ContactPage() {
               Send an Inquiry
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="office-location section-dark" aria-labelledby="office-location-title">
+        <div className="container office-location-grid">
+          <div className="office-location-copy">
+            <p className="section-kicker">Office Location</p>
+            <h2 id="office-location-title">A London base in The Leadenhall Building.</h2>
+            <address>
+              Level 30, The Leadenhall Building
+              <br />
+              122 Leadenhall Street
+              <br />
+              London
+            </address>
+            <p>
+              The location anchors Synaptix Capital in the City of London, close to institutional
+              capital, strategic advisers, and the innovation networks shaping high-conviction
+              technology markets.
+            </p>
+            <a
+              className="button button-primary office-location-button"
+              href="https://www.google.com/maps/search/?api=1&query=Level%2030%2C%20The%20Leadenhall%20Building%2C%20122%20Leadenhall%20Street%2C%20London"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View on Map
+            </a>
+          </div>
+
+          <figure className="office-location-media">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/The_Leadenhall_Building_from_Ground_Level.jpg/1280px-The_Leadenhall_Building_from_Ground_Level.jpg"
+              alt="The Leadenhall Building on Leadenhall Street in the City of London"
+            />
+            <figcaption>
+              Photo: Sebastian Doe, CC BY-SA 2.0, via Wikimedia Commons.
+            </figcaption>
+          </figure>
         </div>
       </section>
     </main>
