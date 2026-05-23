@@ -230,9 +230,6 @@ export function ContactPage() {
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/The_Leadenhall_Building_from_Ground_Level.jpg/1280px-The_Leadenhall_Building_from_Ground_Level.jpg"
               alt="The Leadenhall Building on Leadenhall Street in the City of London"
             />
-            <figcaption>
-              Photo: Sebastian Doe, CC BY-SA 2.0, via Wikimedia Commons.
-            </figcaption>
           </figure>
         </div>
       </section>

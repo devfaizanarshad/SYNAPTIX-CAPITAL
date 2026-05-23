@@ -1,5 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
-import heroImage from "../assets/hero.png";
+import heroImage from "../assets/Hero-Section.png";
 import aboutImage from "../assets/about-us.png";
 import technologyImage from "../assets/technology.png";
 import healthcareImage from "../assets/health care.png";
@@ -252,17 +252,14 @@ export default function Home() {
         <section className="hero section-dark" aria-labelledby="hero-title">
           <div className="hero-stage">
             <HeroAtmosphere />
-            <video
+            <Image
               className="hero-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={heroImage.src}
-            >
-              <source src="/videos/hero-video.mp4" type="video/mp4" />
-            </video>
+              src={heroImage}
+              alt="The Leadenhall Building and City of London skyline"
+              fill
+              priority
+              sizes="100vw"
+            />
             <div className="hero-shade" />
             <div className="hero-orb" aria-hidden="true" />
             <div className="hero-mesh" aria-hidden="true" />
