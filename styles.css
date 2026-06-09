@@ -617,6 +617,182 @@ h3 {
   color: white;
 }
 
+/* Retirement Exit Section */
+.retirement-exit {
+  position: relative;
+  padding: 100px 0;
+  background: var(--navy);
+  color: white;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.retirement-exit::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(184, 136, 76, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  animation: pulse-glow 12s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.re-header {
+  margin-bottom: 36px;
+}
+
+.re-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(184, 136, 76, 0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(184, 136, 76, 0.4);
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.re-title {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  background: linear-gradient(to right, #fff, #d7af73);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.re-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 54px;
+}
+
+.re-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.re-pill.highlight {
+  background: rgba(184, 136, 76, 0.15);
+  border-color: var(--gold);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(184, 136, 76, 0.2);
+  animation: border-pulse 3s infinite;
+}
+
+@keyframes border-pulse {
+  0% { border-color: rgba(184, 136, 76, 0.4); box-shadow: 0 0 10px rgba(184, 136, 76, 0.1); }
+  50% { border-color: rgba(184, 136, 76, 1); box-shadow: 0 0 20px rgba(184, 136, 76, 0.4); }
+  100% { border-color: rgba(184, 136, 76, 0.4); box-shadow: 0 0 10px rgba(184, 136, 76, 0.1); }
+}
+
+.re-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.re-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+.re-content .re-lead {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.re-cta {
+  margin-top: 12px;
+  padding: 0 32px;
+  height: 48px;
+  font-size: 0.8rem;
+}
+
+.re-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.re-card {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: transform 300ms ease, background 300ms ease, border-color 300ms ease;
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.re-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(184, 136, 76, 0.5);
+}
+
+.re-card h4 {
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+}
+
+.re-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-effect {
+  position: relative;
+  overflow: visible;
+}
+.glow-effect::before {
+  content: "";
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: var(--gold);
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  border-radius: inherit;
+}
+.glow-effect:hover::before {
+  opacity: 0.7;
+}
+
 @media (max-width: 1040px) {
   .site-header {
     grid-template-columns: auto auto;
@@ -640,7 +816,8 @@ h3 {
 
   .focus-grid,
   .credibility-grid,
-  .cta-grid {
+  .cta-grid,
+  .re-grid {
     grid-template-columns: 1fr;
   }
 
@@ -709,7 +886,8 @@ h3 {
   .insights,
   .focus,
   .credibility,
-  .final-cta {
+  .final-cta,
+  .retirement-exit {
     padding: 64px 0;
   }
 
