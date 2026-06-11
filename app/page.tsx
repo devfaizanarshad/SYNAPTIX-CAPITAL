@@ -11,7 +11,6 @@ import { PositioningSection } from "./components/PositioningSection";
 import { NarrativeSections } from "./components/NarrativeSections";
 import { ServicesSection, type ServiceItem } from "./components/ServicesSection";
 import { TechnologySection, type TechnologyItem } from "./components/TechnologySection";
-import { FoundersSection, type FounderPrinciple } from "./components/FoundersSection";
 import { HeroAtmosphere } from "./components/HeroAtmosphere";
 import { SiteMotion } from "./components/SiteMotion";
 import { RetirementExitSection } from "./components/RetirementExitSection";
@@ -167,29 +166,6 @@ const focusThemes: ImageCard[] = [
     title: "Products meeting real demand",
     copy: "Businesses where advanced capability meets customer adoption, operational execution, and measurable value creation.",
     image: consumerImage
-  }
-];
-
-const founderPrinciples: FounderPrinciple[] = [
-  {
-    title: "Long-term perspective",
-    signal: "Durable value",
-    copy: "We focus on durable outcomes rather than transactional volume, aligning around what compounds value over time."
-  },
-  {
-    title: "Discreet guidance",
-    signal: "Quiet process",
-    copy: "Complex decisions often require quiet, trusted advice. We work with care across sensitive capital and ownership moments."
-  },
-  {
-    title: "Operator and investor experience",
-    signal: "Dual perspective",
-    copy: "Our perspective is informed by both capital allocation and the operational realities of scaling ambitious businesses."
-  },
-  {
-    title: "Alignment over volume",
-    signal: "Selective mandates",
-    copy: "We stay selective so our time, judgment, and network can be directed toward a small number of high-conviction relationships."
   }
 ];
 
@@ -374,8 +350,6 @@ export default function Home() {
         </section>
 
         <ServicesSection items={services} />
-
-        <FoundersSection items={founderPrinciples} />
 
         <section className="transition section-dark" id="transition">
           <div className="container transition-grid">
