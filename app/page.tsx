@@ -196,30 +196,6 @@ const approachSteps = [
   }
 ];
 
-const team = [
-  {
-    name: "Oliver Grant",
-    role: "Managing Partner",
-    image: "/team/oliver-grant.png",
-    copy:
-      "Oliver leads the firm's investment and advisory activity across advanced software, AI infrastructure, and founder-led strategic transactions. His background spans private equity, growth capital, and cross-border shareholder advisory."
-  },
-  {
-    name: "Amelia Ward",
-    role: "Partner, Strategic Advisory",
-    image: "/team/amelia-ward.png",
-    copy:
-      "Amelia advises boards, founders, and shareholders on succession, ownership planning, valuations, and capital readiness, with a focus on UK-based innovation-led businesses."
-  },
-  {
-    name: "Samir Raza",
-    role: "Operating Partner",
-    image: "/team/samir-raza.png",
-    copy:
-      "Samir works closely with portfolio and advisory clients on operational scaling, industrial technology strategy, and the bridge between technical ambition and commercial execution."
-  }
-];
-
 export default function Home() {
   return (
     <>
@@ -271,7 +247,6 @@ export default function Home() {
                 </div>
                 <a href="#transition">Transition</a>
                 <a href="#approach">Approach</a>
-                <a href="#team">Team</a>
               </nav>
               <a className="header-action" href="/contact">
                 Get in Touch
@@ -401,44 +376,6 @@ export default function Home() {
                   <span>{step.number}</span>
                   <h3>{step.title}</h3>
                   <p>{step.copy}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="team section-light" id="team">
-          <div className="container team-shell">
-            <div className="team-head">
-              <div>
-                <p className="section-kicker">Team</p>
-                <h2>People behind the capital, advice, and long-term judgment.</h2>
-              </div>
-              <aside className="team-note">
-                <span className="team-note-label">UK-Based Perspective</span>
-                <p className="team-intro">
-                  Experience across private equity, growth capital, strategic transactions, and
-                  founder-led ownership situations, brought together in a more personal advisory model.
-                </p>
-              </aside>
-            </div>
-
-            <div className="team-editorial">
-              {team.map((member, index) => (
-                <article className={`team-card${index === 0 ? " team-card-featured" : ""}`} key={member.name}>
-                  <figure className="team-portrait">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      sizes={index === 0 ? "(max-width: 900px) 100vw, 44vw" : "(max-width: 900px) 100vw, 30vw"}
-                    />
-                  </figure>
-                  <div className="team-body">
-                    <p className="team-role">{member.role}</p>
-                    <h3>{member.name}</h3>
-                    <span>{member.copy}</span>
-                  </div>
                 </article>
               ))}
             </div>
