@@ -30,6 +30,10 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function firstNameFrom(name: string) {
+  return name.split(/\s+/)[0] || name;
+}
+
 function detailRow(label: string, value: string) {
   return `
     <tr>
@@ -37,6 +41,24 @@ function detailRow(label: string, value: string) {
       <td style="padding:12px 0;border-bottom:1px solid #e8e1d7;color:#111827;font-size:15px;line-height:1.5;vertical-align:top">${escapeHtml(value)}</td>
     </tr>
   `;
+}
+
+async function sendResendEmail(body: {
+  from: string;
+  to: string[];
+  reply_to?: string;
+  subject: string;
+  text: string;
+  html: string;
+}) {
+  return fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -57,6 +79,7 @@ export async function POST(request: NextRequest) {
   const company = stringValue(payload.company);
   const inquiry = stringValue(payload.inquiry);
   const message = stringValue(payload.message);
+  const firstName = firstNameFrom(name);
 
   if (!name || !email || !company || !inquiry || !message) {
     return NextResponse.json({ message: "Please complete every field before submitting." }, { status: 400 });
@@ -131,25 +154,102 @@ export async function POST(request: NextRequest) {
     </html>
   `;
 
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [contactEmail],
-      reply_to: email,
-      subject: `Synaptix Capital inquiry from ${name}`,
-      text,
-      html
-    })
+  const acknowledgementText = [
+    `Dear ${firstName},`,
+    "",
+    "Thank you for contacting Synaptix Capital Ltd",
+    "",
+    "We have successfully received your submission and appreciate your interest in our firm. Whether you are a business owner exploring strategic capital or acquisition opportunities, or an investor interested in partnering with us, we value the opportunity to connect.",
+    "",
+    "Our team will review the information you have provided and determine the appropriate next steps. If there is a potential fit, a member of our team will reach out directly to continue the conversation and discuss how we may be able to work together.",
+    "",
+    "At Synaptix Capital Ltd, we focus on identifying and supporting exceptional businesses while creating long-term value for founders, management teams, and investment partners. We appreciate your interest and look forward to learning more about your objectives.",
+    "",
+    "Please note that response times may vary depending on the volume of inquiries we receive.",
+    "",
+    "Thank you again for reaching out.",
+    "",
+    "Kind regards,",
+    "",
+    "The Team at Synaptix Capital Ltd",
+    "",
+    "www.synaptix.capital",
+    "",
+    contactEmail
+  ].join("\n");
+
+  const acknowledgementHtml = `
+    <!doctype html>
+    <html lang="en">
+      <body style="margin:0;padding:0;background:#f4f0ea;font-family:Arial,Helvetica,sans-serif;color:#111827">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f4f0ea;padding:28px 12px">
+          <tr>
+            <td align="center">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
+                <tr>
+                  <td style="padding:34px 36px;background:#06131a">
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase">Synaptix Capital</p>
+                    <p style="margin:0;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Inquiry Received</p>
+                    <h1 style="margin:10px 0 0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">Thank you for contacting Synaptix Capital Ltd</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:32px 36px;color:#1f2933;font-size:15px;line-height:1.75">
+                    <p style="margin:0 0 18px">Dear ${escapeHtml(firstName)},</p>
+                    <p style="margin:0 0 18px">Thank you for contacting Synaptix Capital Ltd</p>
+                    <p style="margin:0 0 18px">We have successfully received your submission and appreciate your interest in our firm. Whether you are a business owner exploring strategic capital or acquisition opportunities, or an investor interested in partnering with us, we value the opportunity to connect.</p>
+                    <p style="margin:0 0 18px">Our team will review the information you have provided and determine the appropriate next steps. If there is a potential fit, a member of our team will reach out directly to continue the conversation and discuss how we may be able to work together.</p>
+                    <p style="margin:0 0 18px">At Synaptix Capital Ltd, we focus on identifying and supporting exceptional businesses while creating long-term value for founders, management teams, and investment partners. We appreciate your interest and look forward to learning more about your objectives.</p>
+                    <p style="margin:0 0 18px">Please note that response times may vary depending on the volume of inquiries we receive.</p>
+                    <p style="margin:0 0 24px">Thank you again for reaching out.</p>
+                    <p style="margin:0 0 4px">Kind regards,</p>
+                    <p style="margin:0 0 18px">The Team at Synaptix Capital Ltd</p>
+                    <p style="margin:0"><a href="https://www.synaptix.capital" style="color:#8c5f2b;text-decoration:none">www.synaptix.capital</a></p>
+                    <p style="margin:4px 0 0"><a href="mailto:${escapeHtml(contactEmail)}" style="color:#8c5f2b;text-decoration:none">${escapeHtml(contactEmail)}</a></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:18px 36px;background:#06131a;color:#c8d0d6;font-size:12px;line-height:1.6">
+                    <strong style="display:block;color:#e6bd82;font-size:12px;letter-spacing:0.14em;text-transform:uppercase">Synaptix Capital Ltd</strong>
+                    This confirmation was sent because an inquiry was submitted at www.synaptix.capital.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  `;
+
+  const resendResponse = await sendResendEmail({
+    from: fromEmail,
+    to: [contactEmail],
+    reply_to: email,
+    subject: `Synaptix Capital inquiry from ${name}`,
+    text,
+    html
   });
 
   if (!resendResponse.ok) {
     return NextResponse.json(
       { message: "Your inquiry could not be sent. Please email info@synaptix.capital directly." },
+      { status: 502 }
+    );
+  }
+
+  const acknowledgementResponse = await sendResendEmail({
+    from: fromEmail,
+    to: [email],
+    reply_to: contactEmail,
+    subject: "Thank you for contacting Synaptix Capital Ltd",
+    text: acknowledgementText,
+    html: acknowledgementHtml
+  });
+
+  if (!acknowledgementResponse.ok) {
+    return NextResponse.json(
+      { message: "Your inquiry was received, but the confirmation email could not be sent." },
       { status: 502 }
     );
   }
