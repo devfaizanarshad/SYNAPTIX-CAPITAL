@@ -1,3 +1,7 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+
 const inquiryTypes = [
   "Capital strategy or fundraising",
   "Shareholder transition or succession",
@@ -5,11 +9,13 @@ const inquiryTypes = [
   "Frontier technology investment discussion"
 ];
 
+const contactEmail = "info@synaptix.capital";
+
 const contactDetails = [
   {
     label: "Email",
-    value: "info@synaptixcapital.com",
-    href: "mailto:info@synaptixcapital.com"
+    value: contactEmail,
+    href: `mailto:${contactEmail}`
   },
   {
     label: "Office",
@@ -29,6 +35,52 @@ const contactDetails = [
 ];
 
 export function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("submitting");
+    setStatusMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          company: formData.get("company"),
+          inquiry: formData.get("inquiry"),
+          message: formData.get("message"),
+          website: formData.get("website")
+        })
+      });
+
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message || "Your inquiry could not be sent.");
+      }
+
+      form.reset();
+      setStatus("success");
+      setStatusMessage(result.message || "Your inquiry has been sent. We will reply directly.");
+    } catch (error) {
+      setStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Your inquiry could not be sent. Please email us directly."
+      );
+    }
+  }
+
   return (
     <main className="contact-page">
       <section className="contact-hero section-dark">
@@ -63,7 +115,7 @@ export function ContactPage() {
             <a href="/#approach">Approach</a>
             <a href="/#team">Team</a>
           </nav>
-          <a className="header-action" href="mailto:info@synaptixcapital.com">
+          <a className="header-action" href={`mailto:${contactEmail}`}>
             Email Us
           </a>
         </header>
@@ -78,7 +130,7 @@ export function ContactPage() {
               strategic growth situations.
             </p>
             <div className="contact-hero-actions">
-              <a className="button button-primary" href="mailto:info@synaptixcapital.com">
+              <a className="button button-primary" href={`mailto:${contactEmail}`}>
                 Email Synaptix Capital
               </a>
               <a className="button button-quiet" href="/#about">
@@ -87,11 +139,16 @@ export function ContactPage() {
             </div>
           </div>
 
-          <form className="contact-form" aria-label="Contact form">
+          <form className="contact-form" aria-label="Contact form" onSubmit={handleSubmit}>
             <div className="contact-form-head">
               <span>Private Inquiry</span>
               <h2>Tell us where the conversation should begin.</h2>
             </div>
+
+            <label className="contact-honeypot" aria-hidden="true">
+              <span>Website</span>
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+            </label>
 
             <div className="form-grid">
               <label>
@@ -101,6 +158,7 @@ export function ContactPage() {
                   name="name"
                   placeholder="Your name"
                   autoComplete="name"
+                  required
                   suppressHydrationWarning
                 />
               </label>
@@ -111,6 +169,7 @@ export function ContactPage() {
                   name="email"
                   placeholder="you@company.com"
                   autoComplete="email"
+                  required
                   suppressHydrationWarning
                 />
               </label>
@@ -123,13 +182,14 @@ export function ContactPage() {
                 name="company"
                 placeholder="Company or organisation"
                 autoComplete="organization"
+                required
                 suppressHydrationWarning
               />
             </label>
 
             <label>
               <span>Inquiry Type</span>
-              <select name="inquiry" defaultValue="" suppressHydrationWarning>
+              <select name="inquiry" defaultValue="" required suppressHydrationWarning>
                 <option value="" disabled>
                   Select a topic
                 </option>
@@ -147,6 +207,7 @@ export function ContactPage() {
                 name="message"
                 rows={5}
                 placeholder="Share the situation, timing, objectives, and anything that should remain confidential."
+                required
                 suppressHydrationWarning
               />
             </label>
@@ -154,12 +215,19 @@ export function ContactPage() {
             <button
               className="button button-primary contact-submit"
               type="submit"
+              disabled={status === "submitting"}
               suppressHydrationWarning
             >
-              Submit Inquiry
+              {status === "submitting" ? "Sending..." : "Submit Inquiry"}
             </button>
+            {statusMessage ? (
+              <p className={`contact-form-status contact-form-status-${status}`} role="status" aria-live="polite">
+                {statusMessage}
+              </p>
+            ) : null}
             <p className="contact-form-note">
-              This form is prepared for confidential first contact. For urgent matters, email us directly.
+              This form sends confidential first contact directly to {contactEmail}. For urgent matters,
+              email us directly.
             </p>
           </form>
         </div>
@@ -191,7 +259,7 @@ export function ContactPage() {
                 </div>
               ))}
             </div>
-            <a className="button button-primary contact-brief-button" href="mailto:info@synaptixcapital.com">
+            <a className="button button-primary contact-brief-button" href={`mailto:${contactEmail}`}>
               Send an Inquiry
             </a>
           </div>

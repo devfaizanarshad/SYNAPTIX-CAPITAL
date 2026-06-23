@@ -1968,6 +1968,40 @@ h3 {
   color: #06131a;
 }
 
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form-status {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.contact-form-status-success {
+  color: #d8f3df;
+  background: rgba(47, 125, 74, 0.18);
+  border-color: rgba(112, 210, 142, 0.34);
+}
+
+.contact-form-status-error {
+  color: #ffe1dc;
+  background: rgba(154, 54, 42, 0.18);
+  border-color: rgba(238, 119, 105, 0.34);
+}
+
 .contact-form-note {
   margin: 14px 0 0;
   color: rgba(255, 255, 255, 0.58);

@@ -449,7 +449,7 @@ export default function Home() {
                 <a className="button button-primary" href="/contact">
                   Start a Conversation
                 </a>
-                <a className="button button-quiet" href="mailto:info@synaptixcapital.com">
+                <a className="button button-quiet" href="mailto:info@synaptix.capital">
                   Email Directly
                 </a>
               </div>
