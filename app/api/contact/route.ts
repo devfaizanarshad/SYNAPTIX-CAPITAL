@@ -2,10 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 const contactEmail = process.env.CONTACT_TO_EMAIL || "info@synaptix.capital";
 const fromEmail = process.env.CONTACT_FROM_EMAIL || "Synaptix Capital <onboarding@resend.dev>";
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://synaptix.capital");
-const logoUrl = process.env.CONTACT_LOGO_URL || `${siteUrl.replace(/\/$/, "")}/logo.png`;
 const resendApiKey = process.env.RESEND_API_KEY;
 
 type ContactPayload = {
@@ -98,15 +94,11 @@ export async function POST(request: NextRequest) {
             <td align="center">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
                 <tr>
-                  <td style="padding:0;background:#111814">
-                    <img src="${escapeHtml(logoUrl)}" width="640" alt="Synaptix Capital" style="display:block;width:100%;max-width:640px;height:auto;border:0" />
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:34px 36px 12px">
+                  <td style="padding:34px 36px 12px;background:#06131a">
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase">Synaptix Capital</p>
                     <p style="margin:0 0 10px;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Private Inquiry</p>
-                    <h1 style="margin:0;color:#06131a;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">New Synaptix Capital inquiry</h1>
-                    <p style="margin:14px 0 0;color:#5b6470;font-size:15px;line-height:1.65">A new contact form submission has been received. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
+                    <h1 style="margin:0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">New Synaptix Capital inquiry</h1>
+                    <p style="margin:14px 0 0;color:#c8d0d6;font-size:15px;line-height:1.65">A new contact form submission has been received. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
                   </td>
                 </tr>
                 <tr>
