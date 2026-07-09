@@ -37,7 +37,7 @@ function firstNameFrom(name: string) {
 function detailRow(label: string, value: string) {
   return `
     <tr>
-      <td style="padding:12px 0;border-bottom:1px solid #e8e1d7;color:#7a6c5a;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;width:145px;vertical-align:top">${label}</td>
+      <td style="padding:12px 0;border-bottom:1px solid #e8e1d7;color:#7a6c5a;font-size:12px;font-weight:700;letter-spacing:0.08em;width:145px;vertical-align:top">${label}</td>
       <td style="padding:12px 0;border-bottom:1px solid #e8e1d7;color:#111827;font-size:15px;line-height:1.5;vertical-align:top">${escapeHtml(value)}</td>
     </tr>
   `;
@@ -118,31 +118,31 @@ export async function POST(request: NextRequest) {
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
                 <tr>
                   <td style="padding:34px 36px 12px;background:#06131a">
-                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase">Synaptix Capital</p>
-                    <p style="margin:0 0 10px;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Private Inquiry</p>
-                    <h1 style="margin:0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">New Synaptix Capital inquiry</h1>
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;letter-spacing:0.16em">SYNAPTIX CAPITAL</p>
+                    <p style="margin:0 0 10px;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em">PRIVATE INQUIRY</p>
+                    <h1 style="margin:0;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700;line-height:1.2">New Synaptix Capital inquiry</h1>
                     <p style="margin:14px 0 0;color:#c8d0d6;font-size:15px;line-height:1.65">A new contact form submission has been received. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:8px 36px 8px">
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                      ${detailRow("Name", name)}
-                      ${detailRow("Email", email)}
-                      ${detailRow("Company", company)}
-                      ${detailRow("Inquiry", inquiry)}
+                      ${detailRow("NAME", name)}
+                      ${detailRow("EMAIL", email)}
+                      ${detailRow("COMPANY", company)}
+                      ${detailRow("INQUIRY", inquiry)}
                     </table>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:18px 36px 36px">
-                    <p style="margin:0 0 10px;color:#7a6c5a;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Brief Context</p>
+                    <p style="margin:0 0 10px;color:#7a6c5a;font-size:12px;font-weight:700;letter-spacing:0.08em">BRIEF CONTEXT</p>
                     <div style="padding:18px 20px;background:#faf7f2;border-left:3px solid #b88a50;color:#1f2933;font-size:15px;line-height:1.7;white-space:pre-wrap">${escapeHtml(message)}</div>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:18px 36px;background:#06131a;color:#c8d0d6;font-size:12px;line-height:1.6">
-                    <strong style="display:block;color:#e6bd82;font-size:12px;letter-spacing:0.14em;text-transform:uppercase">Synaptix Capital</strong>
+                    <strong style="display:block;color:#e6bd82;font-size:12px;letter-spacing:0.14em">SYNAPTIX CAPITAL</strong>
                     Confidential first contact routed to ${escapeHtml(contactEmail)}.
                   </td>
                 </tr>
@@ -188,9 +188,9 @@ export async function POST(request: NextRequest) {
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
                 <tr>
                   <td style="padding:34px 36px;background:#06131a">
-                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase">Synaptix Capital</p>
-                    <p style="margin:0;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Inquiry Received</p>
-                    <h1 style="margin:10px 0 0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">Thank you for contacting Synaptix Capital Ltd</h1>
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;letter-spacing:0.16em">SYNAPTIX CAPITAL</p>
+                    <p style="margin:0;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em">INQUIRY RECEIVED</p>
+                    <h1 style="margin:10px 0 0;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700;line-height:1.2">Thank you for contacting Synaptix Capital Ltd</h1>
                   </td>
                 </tr>
                 <tr>
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
                 </tr>
                 <tr>
                   <td style="padding:18px 36px;background:#06131a;color:#c8d0d6;font-size:12px;line-height:1.6">
-                    <strong style="display:block;color:#e6bd82;font-size:12px;letter-spacing:0.14em;text-transform:uppercase">Synaptix Capital Ltd</strong>
+                    <strong style="display:block;color:#e6bd82;font-size:12px;letter-spacing:0.14em">SYNAPTIX CAPITAL LTD</strong>
                     This confirmation was sent because an inquiry was submitted at www.synaptix.capital.
                   </td>
                 </tr>
