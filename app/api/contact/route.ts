@@ -118,9 +118,9 @@ export async function POST(request: NextRequest) {
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
                 <tr>
                   <td style="padding:34px 36px 12px;background:#06131a">
-                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;letter-spacing:0.16em">SYNAPTIX CAPITAL</p>
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em">SYNAPTIX CAPITAL</p>
                     <p style="margin:0 0 10px;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em">PRIVATE INQUIRY</p>
-                    <h1 style="margin:0;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700;line-height:1.2">New Synaptix Capital inquiry</h1>
+                    <h1 style="margin:0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">New Synaptix Capital inquiry</h1>
                     <p style="margin:14px 0 0;color:#c8d0d6;font-size:15px;line-height:1.65">A new contact form submission has been received. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
                   </td>
                 </tr>
@@ -188,9 +188,9 @@ export async function POST(request: NextRequest) {
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #e2d8ca">
                 <tr>
                   <td style="padding:34px 36px;background:#06131a">
-                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;letter-spacing:0.16em">SYNAPTIX CAPITAL</p>
+                    <p style="margin:0 0 20px;color:#f2eadc;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;letter-spacing:0.18em">SYNAPTIX CAPITAL</p>
                     <p style="margin:0;color:#b88a50;font-size:12px;font-weight:700;letter-spacing:0.16em">INQUIRY RECEIVED</p>
-                    <h1 style="margin:10px 0 0;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:700;line-height:1.2">Thank you for contacting Synaptix Capital Ltd</h1>
+                    <h1 style="margin:10px 0 0;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;line-height:1.2">Thank you for contacting Synaptix Capital Ltd</h1>
                   </td>
                 </tr>
                 <tr>
